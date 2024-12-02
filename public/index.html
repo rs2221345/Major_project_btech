@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LAN Video Call with Sign Language Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="preload" href="sounds/ringtone.mp3" as="audio" type="audio/mpeg">
+    <link rel="preconnect" href="https://<%= host %>:5000">
+</head>
+<body>
+    <div class="container">
+        <h1>LAN Video Call with Sign Language Detection</h1>
+        
+        <div class="main-content">
+            <div id="videoContainer" class="video-container">
+                <div class="video-wrapper">
+                    <video id="localVideo" autoplay muted></video>
+                    <div class="video-label">You</div>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remoteVideo" autoplay></video>
+                    <div class="video-label">Remote User</div>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <button id="userSelectButton" class="dropbtn">Select User</button>
+                        <div id="userSelect" class="dropdown-content"></div>
+                    </div>
+                    <div id="selectedUserDisplay" class="selected-user-display">No User Selected</div>
+                </div>
+
+                <div class="controls">
+                    <button id="callButton">Call</button>
+                    <button id="hangUpButton">Hang Up</button>
+                    <button id="captionButton" style="display: none;">Start Captioning</button>
+                    <button id="toggleSignLanguageButton"style="display: none;">Start Sign Language Detection</button>
+                </div>
+
+                <div id="sign-language-container" class="sign-language-container">
+                    <h3>Sign Language Detection</h3>
+                    <div class="prediction-display">
+                        <p class="letter">Current Letter: <span id="current-letter"></span></p>
+                        <p class="word">Current Word: <span id="current-word"></span></p>
+                        <p class="sentence">Sentence: <span id="current-sentence"></span></p>
+                    </div>
+                </div>
+
+                <div id="captionBox" class="caption-box" style="display: none;">
+                    <h3>Speech Captions</h3>
+                    <div id="captionText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+
+    <audio id="ringtone" preload="auto" loop>
+        <source src="sounds/ringtone.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>

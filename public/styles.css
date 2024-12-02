@@ -1,0 +1,318 @@
+:root {
+    --primary-bg: #282c34;
+    --secondary-bg: #3a3f4b;
+    --accent-color: #61dafb;
+    --text-color: white;
+    --border-radius: 5px;
+    --spacing-unit: 20px;
+}
+
+body {
+    margin: 0;
+    padding: var(--spacing-unit);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+.video-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.video-wrapper {
+    position: relative;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.video-label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.side-panel {
+    flex: 1;
+    background-color: #3a3f4b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.dropdown-container {
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.dropbtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #61dafb;
+    color: black;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-content div:hover {
+    background-color: #ddd;
+}
+
+.selected-user-display {
+    padding: 10px;
+    background-color: #4a4f5a;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #61dafb;
+    color: black;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+.detection-results, .caption-box {
+    background-color: #4a4f5a;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.detection-text, #captionText {
+    background-color: #3a3f4b;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 50px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .video-container {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        margin-top: 20px;
+    }
+}
+
+/* Add these styles to your existing CSS */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #3a3f4b;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    min-width: 300px;
+    animation: slideIn 0.3s ease-out;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.custom-notification .notification-message {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.custom-notification .notification-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.custom-notification button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.custom-notification .accept-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.custom-notification .reject-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.custom-notification .busy-btn {
+    background-color: #ff9800;
+    color: white;
+}
+
+.custom-notification .ok-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.custom-notification.alert {
+    background-color: #f58607;
+}
+
+.custom-notification.error {
+    background-color: #f44336;
+}
+
+.custom-notification.success {
+    background-color: #4CAF50;
+}
+
+.prediction-display {
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+    min-width: 200px;
+}
+
+.prediction-display p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+#toggleSignLanguageButton.active {
+    background-color: #f44336;
+    color: white;
+}
+
+.detection-text {
+    padding: 10px;
+    background: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+    min-height: 50px;
+    word-wrap: break-word;
+    min-width: auto;
+}
+
+.letter { color: #4CAF50; }
+.word { color: #2196F3; }
+.sentence { color: #FFC107; }
+
+.sign-language-container {
+position: relative;
+    top: 10px;
+    right: 10px;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    display: none; /* Initially hidden */
+}
+
+.prediction-display {
+    color: white;
+}
+
+.prediction-display p {
+
+    bottom: 1;
+    right: 1;
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+#toggleSignLanguageButton.active {
+    background-color: #f44336;
+    color: white;
+}
